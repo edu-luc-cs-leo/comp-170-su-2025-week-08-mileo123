@@ -44,19 +44,19 @@ class Person:
         day = self.birthday.day
         month = self.birthday.get_month_name()
 
-    if 11 <= day <= 13:
-        suffix = "th"
-    else:
-        last_digit = day % 10
-        if last_digit == 1:
-            suffix = "st"
-        elif last_digit == 2:
-            suffix = "nd"
-        elif last_digit == 3:
-            suffix = "rd"
-        else:
+        if 11 <= day <= 13:
             suffix = "th"
-    return f"{day}{suffix} of {month}"
+        else:
+            last_digit = day % 10
+            if last_digit == 1:
+                suffix = "st"
+            elif last_digit == 2:
+                suffix = "nd"
+            elif last_digit == 3:
+                suffix = "rd"
+            else:
+                suffix = "th"
+        return f"{day}{suffix} of {month}"
 
     def __lt__(self, other):
         return self.first_name < other.first_name
