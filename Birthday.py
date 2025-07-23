@@ -42,13 +42,18 @@ class Birthday:
 
     # Compute days to birthday
     def days_until(self):
-        # obtain today's date
-        # extract month and day
-        # subtract from birthday
-        # return # of days
         today = datetime.today()
-        # COMPLETE THIS FOR YOUR ASSIGNMENT
-        
+        today_month = today.month
+        today_day = today.day
+        # day and year values
+        d_b = self.day_in_year(self.__month, self.__day)
+        d_t = self.day_in_year(today_month, today_day)
+
+        if d_b > d_t:
+            return d_b - d_t
+        else:
+            return 365 + (d_b - d_t)
+    
     def day_in_year(self, month, day):
         """calculates the day number within the year corresponding to a given 
         date (month, day), assuming that February has 28 days always."""
