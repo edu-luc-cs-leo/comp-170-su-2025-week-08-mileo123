@@ -22,7 +22,7 @@ class Person:
 
     def set_birthday(self, month, day):
         """Mutator for birthday. Uses our very own Birthday class."""
-        self._birthday = Birthday(month, day)
+        self.birthday = Birthday(month, day)
 
     def set_city(self, city):
         """Mutator for city."""
@@ -31,10 +31,35 @@ class Person:
     def get_first_name(self):
         """Accessor for first name"""
         return self.first_name
-
+    
     def get_last_name(self):
         """Accessor for last name"""
         return self.last_name
+
+    def say_birthday(self):
+        """returns a string"""
+        if self.birthday is None:
+            return "Unknown"
+
+        day = self.birthday.day
+        month = self.birthday.get_month_name()
+
+    if 11 <= day <= 13:
+        suffix = "th"
+    else:
+        last_digit = day % 10
+        if last_digit == 1:
+            suffix = "st"
+        elif last_digit == 2:
+            suffix = "nd"
+        elif last_digit == 3:
+            suffix = "rd"
+        else:
+            suffix = "th"
+    return f"{day}{suffix} of {month}"
+
+    def __lt__(self, other):
+        return self.first_name < other.first_name
 
     def __str__(self):
         """String representation for the object"""
